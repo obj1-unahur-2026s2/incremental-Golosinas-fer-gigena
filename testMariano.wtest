@@ -1,0 +1,91 @@
+test "Mariano" {
+
+    const chocolatin = new Chocolatin()
+    chocolatin.setPesoInicial(40)
+
+    const caramelo = new Caramelo()
+    const bombon = new Bombon()
+
+    // COMPRAR
+    mariano.comprar(chocolatin)
+    mariano.comprar(caramelo)
+    mariano.comprar(bombon)
+
+    // CANTIDAD
+    assert.equals(3, mariano.cantidadDeGolosinas())
+
+    // TIENE LA GOLOSINA
+    assert.isTrue(mariano.tieneLaGolosina(chocolatin))
+    assert.isTrue(mariano.tieneLaGolosina(caramelo))
+    assert.isTrue(mariano.tieneLaGolosina(bombon))
+
+    // HAY GOLOSINA SIN TACC
+    assert.isTrue(mariano.hayGolosinaSinTACC())
+
+    // PRECIOS CUIDADOS
+    assert.isTrue(mariano.preciosCuidados())
+
+    // GOLOSINA DE SABOR
+    assert.equals(chocolatin, mariano.golosinaDeSabor(chocolate))
+
+    // GOLOSINAS DE SABOR
+    assert.equals(
+        [caramelo, bombon],
+        mariano.golosinasDeSabor(frutilla)
+    )
+
+    // SABORES
+    assert.equals(
+        #{chocolate, frutilla},
+        mariano.sabores()
+    )
+
+    // GOLOSINA MAS CARA
+    assert.equals(chocolatin, mariano.golosinaMasCara())
+
+    // PESO TOTAL
+    assert.equals(50, mariano.pesoGolosinas())
+
+    // GOLOSINAS FALTANTES
+    assert.equals(
+        #{alfajor, chupetin},
+        mariano.golosinasFaltantes(
+            #{alfajor, bombon, chocolatin, chupetin}
+        )
+    )
+
+    // GUSTOS FALTANTES
+    assert.equals(
+        #{"melón", vainilla},
+        mariano.gustosFaltantes(
+            #{"melón", chocolate, frutilla, vainilla}
+        )
+    )
+
+    // GASTO EN FRUTILLA
+    assert.equals(6, mariano.gastoEn(frutilla))
+
+    // SABOR MAS POPULAR
+    assert.equals(frutilla, mariano.saborMasPopular())
+
+    // SABOR MAS PESADO
+    assert.equals(chocolate, mariano.saborMasPesado())
+
+    // PROBAR GOLOSINAS
+    mariano.probarGolosinas()
+
+    assert.equals(38, chocolatin.peso())
+    assert.equals(4, caramelo.peso())
+    assert.equals(11, bombon.peso())
+
+    // DESECHAR
+    mariano.desechar(caramelo)
+
+    assert.equals(2, mariano.cantidadDeGolosinas())
+    assert.isFalse(mariano.tieneLaGolosina(caramelo))
+
+    // COMPRO Y DESECHO
+    assert.isTrue(mariano.comproYDesecho(caramelo))
+}
+
+}

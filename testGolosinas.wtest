@@ -1,0 +1,181 @@
+import golosinas.*
+
+describe "Tests de golosinas" {
+
+```
+test "Golosinas" {
+
+    // BOMBON
+    const bombon = new Bombon()
+
+    assert.equals(15, bombon.peso())
+    assert.equals(5, bombon.precio())
+    assert.equals(frutilla, bombon.sabor())
+    assert.isTrue(bombon.esLibreDeGluten())
+
+    bombon.recibirMordisco()
+    assert.equals(11, bombon.peso())
+
+    bombon.recibirMordisco()
+    assert.equals(7.8, bombon.peso())
+
+
+    // ALFAJOR
+    const alfajor = new Alfajor()
+
+    assert.equals(300, alfajor.peso())
+    assert.equals(12, alfajor.precio())
+    assert.equals(chocolate, alfajor.sabor())
+    assert.isFalse(alfajor.esLibreDeGluten())
+
+    alfajor.recibirMordisco()
+    assert.equals(240, alfajor.peso())
+
+    alfajor.recibirMordisco()
+    assert.equals(192, alfajor.peso())
+
+
+    // CARAMELO
+    const caramelo = new Caramelo()
+
+    assert.equals(5, caramelo.peso())
+    assert.equals(1, caramelo.precio())
+    assert.equals(frutilla, caramelo.sabor())
+    assert.isTrue(caramelo.esLibreDeGluten())
+
+    caramelo.recibirMordisco()
+    assert.equals(4, caramelo.peso())
+
+    caramelo.recibirMordisco()
+    assert.equals(3, caramelo.peso())
+
+
+    // CHUPETIN
+    const chupetin = new Chupetin()
+
+    assert.equals(7, chupetin.peso())
+    assert.equals(2, chupetin.precio())
+    assert.equals(naranja, chupetin.sabor())
+    assert.isTrue(chupetin.esLibreDeGluten())
+
+    chupetin.recibirMordisco()
+    assert.equals(6.3, chupetin.peso())
+
+    chupetin.recibirMordisco()
+    assert.equals(5.67, chupetin.peso())
+
+
+    // OBLEA
+    const oblea = new Oblea()
+
+    assert.equals(250, oblea.peso())
+    assert.equals(5, oblea.precio())
+    assert.equals(vainilla, oblea.sabor())
+    assert.isFalse(oblea.esLibreDeGluten())
+
+    oblea.recibirMordisco()
+    assert.equals(125, oblea.peso())
+
+    oblea.recibirMordisco()
+    assert.equals(62.5, oblea.peso())
+
+    oblea.recibirMordisco()
+    assert.equals(31.25, oblea.peso())
+
+
+    // CHOCOLATIN 40 GRAMOS
+    const chocolatin40 = new Chocolatin()
+    chocolatin40.setPesoInicial(40)
+
+    assert.equals(40, chocolatin40.peso())
+    assert.equals(20, chocolatin40.precio())
+    assert.equals(chocolate, chocolatin40.sabor())
+    assert.isFalse(chocolatin40.esLibreDeGluten())
+
+    chocolatin40.recibirMordisco()
+    assert.equals(38, chocolatin40.peso())
+
+    chocolatin40.recibirMordisco()
+    assert.equals(36, chocolatin40.peso())
+
+
+    // CHOCOLATIN 100 GRAMOS
+    const chocolatin100 = new Chocolatin()
+    chocolatin100.setPesoInicial(100)
+
+    assert.equals(100, chocolatin100.peso())
+    assert.equals(50, chocolatin100.precio())
+    assert.equals(chocolate, chocolatin100.sabor())
+    assert.isFalse(chocolatin100.esLibreDeGluten())
+
+    chocolatin100.recibirMordisco()
+    assert.equals(98, chocolatin100.peso())
+
+    chocolatin100.recibirMordisco()
+    assert.equals(96, chocolatin100.peso())
+
+
+    // PASTILLA TUTTI-FRUTTI CON TACC
+    const pastillaConTacc = new PastillaTuttiFrutti(esLibreDeGluten = true)
+
+    assert.equals(5, pastillaConTacc.peso())
+    assert.equals(7, pastillaConTacc.precio())
+    assert.equals(frutilla, pastillaConTacc.sabor())
+    assert.isTrue(pastillaConTacc.esLibreDeGluten())
+
+    pastillaConTacc.recibirMordisco()
+    assert.equals(chocolate, pastillaConTacc.sabor())
+
+    pastillaConTacc.recibirMordisco()
+    assert.equals(naranja, pastillaConTacc.sabor())
+
+
+    // PASTILLA TUTTI-FRUTTI SIN TACC
+    const pastillaSinTacc = new PastillaTuttiFrutti(esLibreDeGluten = false)
+
+    assert.equals(5, pastillaSinTacc.peso())
+    assert.equals(10, pastillaSinTacc.precio())
+    assert.equals(frutilla, pastillaSinTacc.sabor())
+    assert.isFalse(pastillaSinTacc.esLibreDeGluten())
+
+    pastillaSinTacc.recibirMordisco()
+    assert.equals(chocolate, pastillaSinTacc.sabor())
+
+    pastillaSinTacc.recibirMordisco()
+    assert.equals(naranja, pastillaSinTacc.sabor())
+
+
+    // GOLOSINA BAÑADA - PASTILLA
+    const pastilla = new PastillaTuttiFrutti(esLibreDeGluten = true)
+    const baniadaPastilla = new GolosinaBaniada(golosinaBase = pastilla)
+
+    assert.equals(9, baniadaPastilla.peso())
+    assert.equals(9, baniadaPastilla.precio())
+    assert.equals(frutilla, baniadaPastilla.sabor())
+    assert.isTrue(baniadaPastilla.esLibreDeGluten())
+
+    baniadaPastilla.recibirMordisco()
+    assert.equals(6.3, baniadaPastilla.peso())
+    assert.equals(chocolate, baniadaPastilla.sabor())
+
+    baniadaPastilla.recibirMordisco()
+    assert.equals(5.67, baniadaPastilla.peso())
+    assert.equals(naranja, baniadaPastilla.sabor())
+
+
+    // GOLOSINA BAÑADA - CHOCOLATIN
+    const chocolatin = new Chocolatin()
+    chocolatin.setPesoInicial(40)
+
+    const baniadaChocolatin = new GolosinaBaniada(golosinaBase = chocolatin)
+
+    assert.equals(44, baniadaChocolatin.peso())
+    assert.equals(22, baniadaChocolatin.precio())
+    assert.equals(chocolate, baniadaChocolatin.sabor())
+    assert.isFalse(baniadaChocolatin.esLibreDeGluten())
+
+    baniadaChocolatin.recibirMordisco()
+    assert.equals(40, baniadaChocolatin.peso())
+
+    baniadaChocolatin.recibirMordisco()
+```
